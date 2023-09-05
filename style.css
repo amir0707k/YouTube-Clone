@@ -146,7 +146,8 @@ border-radius:40px;
 }
 .cards-container{
   justify-content: center;
-  margin: 0px 30px;
+  position: absolute;
+  margin: 230px 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;

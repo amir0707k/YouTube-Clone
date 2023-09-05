@@ -18,6 +18,7 @@ window.addEventListener("load", () => {
   }
   console.log(cookiesData);
   const videoId = cookiesData.id;
+  console.log(videoId);
   const fromChannel = document.getElementById("from-channel");
   fromChannel.addEventListener("click", () => {
     channelDetails();
@@ -34,8 +35,8 @@ window.addEventListener("load", () => {
   try {
     renderVideoDetails(cookiesData);
     renderChannelDetails(cookiesData);
-    renderVideoDescription(videoId);
-    totalNumOfComments(videoId);
+    renderVideoDescription(cookiesData.id);
+    totalNumOfComments(cookiesData.id);
     loadUserPicture(cookiesData);
     loadAllComments(videoId);
     sideVideos();

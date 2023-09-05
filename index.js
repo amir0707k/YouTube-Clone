@@ -109,7 +109,7 @@ function navigateToVideoDetails(
   document.cookie = `channelName=${channelName}; path=/video-details.html`;
   document.cookie = `subscribersCount=${subscribersCount}; path=/video-details.html`;
   document.cookie = `channelId=${channelId}; path=/video-details.html`;
-  window.location.href = "http://127.0.0.1:5500/video-details.html";
+  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
 }
 
 async function getSubscription() {

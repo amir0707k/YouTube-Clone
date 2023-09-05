@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
   });
   const all = document.getElementById("all");
   all.addEventListener("click", () => {
-    window.location.href = "http://127.0.0.1:5500/index.html";
+    window.location.href = "https://amir0707k.github.io/YouTube-Clone/index.html";
   });
   try {
     renderVideoDetails(cookiesData);
@@ -252,11 +252,11 @@ async function renderVideoDetails(cookiesData) {
 }
 
 function navigateToChannelPage(authorImage, authorName, channelId) {
-  document.cookie = `authorImage=${authorImage}; path=/channelDetails.html`;
-  document.cookie = `authorName=${authorName}; path=/channelDetails.html`;
-  document.cookie = `channelId=${channelId}; path=/channelDetails.html`;
+  document.cookie = `authorImage=${authorImage}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
+  document.cookie = `authorName=${authorName}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
+  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
 
-  window.location.href = `http://127.0.0.1:5500/channelDetails.html`;
+  window.location.href = `https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
 }
 
 async function renderChannelDetails(cookiesData) {

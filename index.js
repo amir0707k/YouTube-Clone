@@ -100,7 +100,7 @@ function navigateToVideoDetails(
   subscribersCount,
   channelId
 ) {
-  document.cookie = `id=${videoId}; path=/video-details.html`;
+  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;

@@ -264,13 +264,17 @@ async function fetchSearchResults(searchString) {
   try {
     const response = await fetch(endPoint);
     const result = await response.json();
+    console.log(result);
     for (let i = 0; i < result.items.length; i++) {
       const channelId = result.items[i].snippet.channelId;
       const channelLogo = await channelDetails(channelId);
-      result.items[i].snippet.channelLogo = channelLogo;
+      result.items[i].snippet.channelLogo = channelLogo.channelLogo;
+      if(result.items[i].id.channelId !== undefined){
+        continue;
+      }
       const videoId = result.items[i].id.videoId;
       const viewCount = await videoStatistics(videoId);
-      result.items[i].snippet.viewCount = viewCount;
+      result.items[i].snippet.viewCount = viewCount.viewCount;
     }
     console.log(result);
     renderVideosOntoUI(result.items);

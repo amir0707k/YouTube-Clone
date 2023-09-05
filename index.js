@@ -1,5 +1,8 @@
-let API_key = "AIzaSyDqAVz32vjipV9DLWfZsQr2S5nF1IW8tB4";
+let API_key = "AIzaSyA9LWV77w1tTi_-9RzbYxHDxwPY6KGlbmk";
 let baseURL = "https://www.googleapis.com/youtube/v3";
+let currentPage = 1;
+let isLoadingMore = false;
+let nextPageToken = "";
 //channelDetails = "baseURL/channels?part=snippet&part=statistics&id=UCGIY_O-8vW4rfX98KlMkvRg&key=[YOUR_API_KEY]";
 // videoStatistics = "baseURL/videos?part=statistics&id=${videoId}&key=${API_key}"
 
@@ -70,6 +73,19 @@ rightButton.addEventListener("click", () => {
   toggleRightButtonVisibility();
 });
 
+window.addEventListener("scroll", () => {
+  if (!isLoadingMore && isAtBottom()) {
+    isLoadingMore = true; 
+    loadVideosOntoHomePage(); 
+  }
+});
+
+function isAtBottom() {
+  return (
+    window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 
+  );
+}
+
 async function getSuggestionData() {
   const endPoint = `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=${API_key}`;
   try {
@@ -100,16 +116,16 @@ function navigateToVideoDetails(
   subscribersCount,
   channelId
 ) {
-  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `likesCount=${likesCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelLogo=${channelLogo}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelName=${channelName}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `subscribersCount=${subscribersCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
+  document.cookie = `id=${videoId}; path=/video-details.html`;
+  document.cookie = `videoTitle=${videoTitle}; path=/video-details.html`;
+  document.cookie = `viewsCount=${viewCount}; path=/video-details.html`;
+  document.cookie = `uploadDate=${uploadDate}; path=/video-details.html`;
+  document.cookie = `likesCount=${likesCount}; path=/video-details.html`;
+  document.cookie = `channelLogo=${channelLogo}; path=/video-details.html`;
+  document.cookie = `channelName=${channelName}; path=/video-details.html`;
+  document.cookie = `subscribersCount=${subscribersCount}; path=/video-details.html`;
+  document.cookie = `channelId=${channelId}; path=/video-details.html`;
+  window.location.href = "http://127.0.0.1:5500/video-details.html";
 }
 
 async function getSubscription() {
@@ -189,11 +205,18 @@ async function channelDetails(channelId) {
   }
 }
 
+
 async function loadVideosOntoHomePage() {
-  const endPoint = `${baseURL}/videos?part=snippet&chart=mostPopular&regionCode=IN&key=${API_key}&maxResults=20`;
+  const endPoint = `${baseURL}/videos?part=snippet&chart=mostPopular&regionCode=IN&key=${API_key}&maxResults=20&pageToken=${nextPageToken}`;
   try {
     const response = await fetch(endPoint);
     const result = await response.json();
+    console.log(result);
+    nextPageToken = result.nextPageToken;
+    if (result.items.length === 0) {
+      console.log("No more videos to load.");
+      return;
+    }
     for (let i = 0; i < result.items.length; i++) {
       const {
         snippet: { channelId },
@@ -208,8 +231,10 @@ async function loadVideosOntoHomePage() {
       result.items[i].snippet.viewCount = viewCount;
       result.items[i].snippet.likeCount = likeCount;
     }
+
     console.log(result.items);
     renderVideosOntoUI(result.items);
+    isLoadingMore = false;
   } catch (error) {
     console.log("Error Occured", error);
   }
@@ -345,3 +370,27 @@ function calculateTimeGap(publishTime) {
     )} years ago`);
   }
 }
+
+function navigateToVideoDetails(
+  videoId,
+  videoTitle,
+  viewCount,
+  uploadDate,
+  likesCount,
+  channelLogo,
+  channelName,
+  subscribersCount,
+  channelId
+) {
+  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `likesCount=${likesCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `channelLogo=${channelLogo}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `channelName=${channelName}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `subscribersCount=${subscribersCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
+  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
+}
+

@@ -1,6 +1,6 @@
 // sample :   'https://youtube.googleapis.com/youtube/v3/channels?part=brandingSettings&part=statistics&id=UCVl4xmHsrZSkmxYR1zh52eA&key=[YOUR_API_KEY]'
 
-const API_key = `AIzaSyDqAVz32vjipV9DLWfZsQr2S5nF1IW8tB4`;
+const API_key = `AIzaSyA9LWV77w1tTi_-9RzbYxHDxwPY6KGlbmk`;
 
 window.addEventListener("load", () => {
   const cookies = document.cookie.split(";").map((x) => x.trim());

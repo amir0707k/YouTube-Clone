@@ -294,7 +294,7 @@ async function renderVideoDescription(videoId) {
         <div class="description">
             <p id="initialDesc">${initialDescription}...</p>
             <button id="read-more">Show More</button>
-        </div
+        </div>
     `;
   } catch (error) {
     console.log("Something has happened", error);

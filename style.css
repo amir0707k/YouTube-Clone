@@ -109,10 +109,15 @@ padding: 8px;
 
 .suggestions{
   background-color: var(--grey);
+  width: 100px;
+  height: 25px;
   border-radius: 15px;
   padding: 10px;
   border: 1px solid #ABABAA;
   margin: 2px;
+  display: inline-block;
+  white-space: nowrap;
+  width: fit-content;
 }
 .voice-search{
   border: none;

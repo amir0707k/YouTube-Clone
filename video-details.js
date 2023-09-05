@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
     cookiesData[parts[0]] = parts[1];
   }
   console.log(cookiesData);
-  const videoId = cookiesData.id;
+  const videoId = cookiesData.channelId;
   const fromChannel = document.getElementById("from-channel");
   fromChannel.addEventListener("click", () => {
     channelDetails();

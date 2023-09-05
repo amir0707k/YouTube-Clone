@@ -13,10 +13,31 @@ const togglePanelElement = document.getElementById("toggle-panel");
 const main = document.querySelector(".main");
 const leftPanel = document.querySelector(".left-panel");
 
+function simulatePageLoad() {
+  var progressBar = document.getElementById("progress");
+  var width = 0;
+  var interval = setInterval(frame, 40);
+
+  function frame() {
+    console.log("called");
+    if (width >= 100) {
+      clearInterval(interval);
+      document.getElementById("custom-progress-bar").style.display = "none";
+      document.querySelector(".main-container").style.display = "block";
+      document.querySelector("")
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+
 togglePanelElement.addEventListener("click", () => {
   leftPanel.classList.toggle("toggled");
   main.classList.toggle("main-decreased");
 });
+
+
 
 searchButton.addEventListener("click", () => {
   fetchSearchResults(searchInput.value);
@@ -25,6 +46,10 @@ searchButton.addEventListener("click", () => {
 loadVideosOntoHomePage();
 getSubscription();
 getSuggestionData();
+
+window.addEventListener("load", simulatePageLoad);
+
+
 
 const scrollableChips = document.querySelector(".scrollable-chips");
 const leftButton = document.querySelector(".left-button");

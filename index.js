@@ -13,6 +13,8 @@ const togglePanelElement = document.getElementById("toggle-panel");
 const main = document.querySelector(".main");
 const leftPanel = document.querySelector(".left-panel");
 
+
+window.addEventListener("load", simulatePageLoad);
 function simulatePageLoad() {
   var progressBar = document.getElementById("progress");
   var width = 0;
@@ -47,7 +49,6 @@ loadVideosOntoHomePage();
 getSubscription();
 getSuggestionData();
 
-window.addEventListener("load", simulatePageLoad);
 
 
 

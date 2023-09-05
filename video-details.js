@@ -45,6 +45,14 @@ window.addEventListener("load", () => {
       width: "1150",
       videoId,
     });
+        const buttonElement = document.querySelector(".subscribe");
+
+    buttonElement.addEventListener("click", () => {
+      buttonElement.classList.toggle("subscribed");
+      if (buttonElement.innerText !== "Subscribed") {
+        buttonElement.innerText = "Subscribed";
+      }
+    });
   } catch (error) {
     console.log(error);
   }

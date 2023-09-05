@@ -99,12 +99,19 @@ h3{
 }
 .subscribe{
     background-color: red;
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 6px;
     padding: 10px 20px;
     font-size: 16px;
     outline: none;
+    font-weight: 700;
     border: none;
+    cursor: pointer;
+}
+.subscribed{
+  background-color: #ccccc6;
+  font-weight: 700;
+  color: rgb(43, 42, 42);
 }
 .channel-status{
     display: flex;

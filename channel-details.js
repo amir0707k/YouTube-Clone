@@ -170,6 +170,83 @@ console.log(endPoint)
   }
 }
 
+
+
+
+function calculateTimeGap(publishTime) {
+  let publishedAt;
+  let publishedDate = new Date(publishTime);
+  const currentDate = new Date();
+
+  const secondsGap = (currentDate.getTime() - publishedDate.getTime()) / 1000;
+  
+  const secondsPerDay = 24 * 60 * 60;
+  const secondsPerWeek = 7 * secondsPerDay;
+  const secondsPerMonth = 30 * secondsPerDay;
+  const secondsPerYear = 365 * secondsPerDay;
+  const secondsPerHour = 60 * 60;
+
+  
+  if(secondsPerHour > secondsGap){
+    if(Math.ceil(secondsGap / (60))< 1){
+      return (publishedAt = `Just Now`);
+    }
+    if (Math.ceil(secondsGap / (60)) === 1) {
+      return (publishedAt = `${Math.ceil(secondsGap / (60))} minute ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(secondsGap / (60))} minutes ago`);
+    }
+  }
+  if (secondsPerDay > secondsGap) {
+    if (Math.ceil(secondsGap / (60 * 60)) === 1) {
+      return (publishedAt = `${Math.ceil(secondsGap / (60 * 60))} hr ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(secondsGap / (60 * 60))} hrs ago`);
+    }
+  }
+  if (secondsPerWeek > secondsGap) {
+    if (Math.ceil(secondsGap / secondsPerDay) === 1) {
+      return (publishedAt = `${Math.ceil(secondsGap / secondsPerDay)} day ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(
+        secondsGap / secondsPerDay
+      )} days ago`);
+    }
+  }
+  if (secondsPerMonth > secondsGap) {
+    if (Math.ceil(secondsGap / secondsPerWeek) === 1) {
+      return (publishedAt = `${Math.ceil(
+        secondsGap / secondsPerWeek
+      )} week ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(
+        secondsGap / secondsPerWeek
+      )} weeks ago`);
+    }
+  }
+  if (secondsPerYear > secondsGap) {
+    if (Math.ceil(secondsGap / secondsPerDay) === 1) {
+      return (publishedAt = `${Math.ceil(
+        secondsGap / secondsPerMonth
+      )} month ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(
+        secondsGap / secondsPerMonth
+      )} months ago`);
+    }
+  }
+  if (Math.ceil(secondsGap / secondsPerYear) === 1) {
+    return (publishedAt = `${Math.ceil(secondsGap / secondsPerYear)} year ago`);
+  } else {
+    return (publishedAt = `${Math.ceil(
+      secondsGap / secondsPerYear
+    )} years ago`);
+  }
+}
+
+
+
+
 async function checkVideosAvailability(channelId) {
   const endPoint = `https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${API_key}`;
 

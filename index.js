@@ -35,8 +35,14 @@ function simulatePageLoad() {
 }
 
 togglePanelElement.addEventListener("click", () => {
-  leftPanel.classList.toggle("toggled");
+leftPanel.classList.toggle("toggled");
   main.classList.toggle("main-decreased");
+  document
+    .querySelector(".cards-container")
+    .classList.toggle("cards-container-decreased");
+    document.querySelectorAll(".card").forEach(card => {
+      card.classList.toggle("card-decreased");
+    }) 
 });
 
 

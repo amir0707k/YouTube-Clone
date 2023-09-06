@@ -337,6 +337,19 @@ function calculateTimeGap(publishTime) {
   const secondsPerMonth = 30 * secondsPerDay;
   const secondsPerYear = 365 * secondsPerDay;
 
+  const secondsPerHour = 60 * 60;
+
+  if (secondsPerHour > secondsGap) {
+    if (Math.ceil(secondsGap / 60) < 1) {
+      return (publishedAt = `Just Now`);
+    }
+    if (Math.ceil(secondsGap / 60) === 1) {
+      return (publishedAt = `${Math.ceil(secondsGap / 60)} minute ago`);
+    } else {
+      return (publishedAt = `${Math.ceil(secondsGap / 60)} minutes ago`);
+    }
+  }
+
   if (secondsPerDay > secondsGap) {
     if (Math.ceil(secondsGap / (60 * 60)) === 1) {
       return (publishedAt = `${Math.ceil(secondsGap / (60 * 60))} hr ago`);
@@ -382,28 +395,5 @@ function calculateTimeGap(publishTime) {
       secondsGap / secondsPerYear
     )} years ago`);
   }
-}
-
-function navigateToVideoDetails(
-  videoId,
-  videoTitle,
-  viewCount,
-  uploadDate,
-  likesCount,
-  channelLogo,
-  channelName,
-  subscribersCount,
-  channelId
-) {
-  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `likesCount=${likesCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelLogo=${channelLogo}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelName=${channelName}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `subscribersCount=${subscribersCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
 }
 

@@ -137,6 +137,30 @@ async function getSuggestionData() {
   }
 }
 
+function navigateToVideoDetails(
+  videoId,
+  videoTitle,
+  viewCount,
+  uploadDate,
+  likesCount,
+  channelLogo,
+  channelName,
+  subscribersCount,
+  channelId
+) {
+  document.cookie = `id=${videoId}; path=/video-details.html`;
+  document.cookie = `videoTitle=${videoTitle}; path=/video-details.html`;
+  document.cookie = `viewsCount=${viewCount}; path=/video-details.html`;
+  document.cookie = `uploadDate=${uploadDate}; path=/video-details.html`;
+  document.cookie = `likesCount=${likesCount}; path=/video-details.html`;
+  document.cookie = `channelLogo=${channelLogo}; path=/video-details.html`;
+  document.cookie = `channelName=${channelName}; path=/video-details.html`;
+  document.cookie = `subscribersCount=${subscribersCount}; path=/video-details.html`;
+  document.cookie = `channelId=${channelId}; path=/video-details.html`;
+  window.location.href = "http://127.0.0.1:5500/video-details.html";
+}
+
+
 async function getSubscription() {
   const endPoint = `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=UC6wLgjFDStkG6LpxidBl2AQ&key=${API_key}&maxResults=20`;
   try {

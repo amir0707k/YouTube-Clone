@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
   });
   const all = document.getElementById("all");
   all.addEventListener("click", () => {
-    window.location.href = "https://amir0707k.github.io/YouTube-Clone/index.html";
+    window.location.href = "/index.html";
   });
   try {
     renderVideoDetails(cookiesData);
@@ -41,8 +41,8 @@ window.addEventListener("load", () => {
     loadAllComments(videoId);
     sideVideos();
     new YT.Player("video-placeholder", {
-      height: "700",
-      width: "1150",
+      height: "500",
+      width: "950",
       videoId,
     });
         const buttonElement = document.querySelector(".subscribe");
@@ -338,7 +338,7 @@ function navigateToChannelPage(authorImage, authorName, channelId) {
   document.cookie = `authorName=${authorName}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
   document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
 
-  window.location.href = `https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
+  window.location.href = `/channelDetails.html`;
 }
 
 async function renderChannelDetails(cookiesData) {

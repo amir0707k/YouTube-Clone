@@ -1,4 +1,4 @@
-let API_key = "AIzaSyAwoLey4IDTAJYFhXW9XouU0dvsNVYHPDM";
+let API_key = "AIzaSyDqAVz32vjipV9DLWfZsQr2S5nF1IW8tB4";
 let baseURL = "https://www.googleapis.com/youtube/v3";
 let currentPage = 1;
 let isLoadingMore = false;
@@ -12,7 +12,48 @@ const container = document.getElementById("cards-container");
 const togglePanelElement = document.getElementById("toggle-panel");
 const main = document.querySelector(".main");
 const leftPanel = document.querySelector(".left-panel");
+const ul = document.querySelector(".dropdown-menu");
 
+searchInput.addEventListener("input", () => {
+  if(searchInput.value === ""){
+    ul.style.display = "none";
+  }
+  const value = searchInput.value.trim();
+
+  
+  if(value){
+    searchingArray(searchInput.value);
+  }else{
+    
+    ul.innerHTML = "";
+    ul.style.display = "none";
+    return;
+  }
+})
+
+async function searchingArray(searchString){
+
+  ul.innerHTML = "";
+  console.log(ul)
+  const header = document.querySelector(".header");
+  const endPoint = `${baseURL}/search?key=${API_key}&q=${searchString}&part=snippet&maxResults=10`;
+  try {
+    const response = await fetch(endPoint);
+    const result = await response.json();
+    console.log(result.items);
+    result.items.forEach(item => {
+      const li = document.createElement('li');
+      li.className = "searchQuery";
+      li.innerHTML = `
+      <span class = "material-symbols-outlined"> search </span> ${item.snippet.title}
+      `;
+      ul.append(li);
+    });
+    ul.style.display = "block";
+  } catch (error) {
+    console.log("Some Error Occured", error);
+  }
+}
 
 window.addEventListener("load", simulatePageLoad);
 function simulatePageLoad() {
@@ -21,12 +62,10 @@ function simulatePageLoad() {
   var interval = setInterval(frame, 40);
 
   function frame() {
-    console.log("called");
     if (width >= 100) {
       clearInterval(interval);
       document.getElementById("custom-progress-bar").style.display = "none";
       document.querySelector(".main-container").style.display = "block";
-      document.querySelector("")
     } else {
       width++;
       progressBar.style.width = width + "%";
@@ -148,16 +187,16 @@ function navigateToVideoDetails(
   subscribersCount,
   channelId
 ) {
-  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `likesCount=${likesCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelLogo=${channelLogo}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelName=${channelName}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `subscribersCount=${subscribersCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
+  document.cookie = `id=${videoId}; path=/video-details.html`;
+  document.cookie = `videoTitle=${videoTitle}; path=/video-details.html`;
+  document.cookie = `viewsCount=${viewCount}; path=/video-details.html`;
+  document.cookie = `uploadDate=${uploadDate}; path=/video-details.html`;
+  document.cookie = `likesCount=${likesCount}; path=/video-details.html`;
+  document.cookie = `channelLogo=${channelLogo}; path=/video-details.html`;
+  document.cookie = `channelName=${channelName}; path=/video-details.html`;
+  document.cookie = `subscribersCount=${subscribersCount}; path=/video-details.html`;
+  document.cookie = `channelId=${channelId}; path=/video-details.html`;
+  window.location.href = "./video-details.html";
 }
 
 

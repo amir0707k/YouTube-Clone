@@ -28,6 +28,13 @@ window.addEventListener("load", () => {
       cookiesData.channelId
     );
   });
+
+  const youtubeLogo = document.querySelector(".logo");
+
+  youtubeLogo.addEventListener("click", () => {
+    window.location.href = "./index.html";
+  });
+  
   const all = document.getElementById("all");
   all.addEventListener("click", () => {
     window.location.href = "/index.html";

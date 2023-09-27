@@ -25,6 +25,11 @@ togglePanelElement.addEventListener("click", () => {
   main.classList.toggle("main-decreased");
 });
 
+const youtubeLogo = document.querySelector(".logo");
+
+youtubeLogo.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});
 
 getSubscription();
 

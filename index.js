@@ -13,6 +13,11 @@ const togglePanelElement = document.getElementById("toggle-panel");
 const main = document.querySelector(".main");
 const leftPanel = document.querySelector(".left-panel");
 const ul = document.querySelector(".dropdown-menu");
+const youtubeLogo = document.querySelector(".logo");
+
+youtubeLogo.addEventListener("click",() => {
+  window.location.href = "./index.html";
+})
 
 searchInput.addEventListener("input", () => {
   if(searchInput.value === ""){
@@ -58,13 +63,6 @@ async function searchingArray(searchString){
     console.log("Some Error Occured", error);
   }
 }
-
-// const allSearchItems = document.querySelectorAll(".searchQuery");
-// if(allSearchItems){
-//   allSearchItems.forEach((searchItem) => {
-//     console.log()
-//   })
-// }
 
 window.addEventListener("load", simulatePageLoad);
 function simulatePageLoad() {

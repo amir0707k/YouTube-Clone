@@ -69,6 +69,7 @@ padding: 8px;
 }
 .searchQuery{
   padding: 8px;
+  cursor: pointer;
 }
 .whole-body-container{
   position: relative;
@@ -97,10 +98,12 @@ align-items: center;
   left: 33.2%;
   box-sizing: border-box;
   border-radius: 10px;
-  background-color: #f83535;
+  background-color: #232322;
   flex-direction: column;
   padding: 5px 0;
   display: none;
+  font-size: 14px;
+  font-weight: 700;
 }
 .search-bar {
   background: black;

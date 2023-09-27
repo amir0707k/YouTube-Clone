@@ -32,7 +32,7 @@ searchInput.addEventListener("input", () => {
 })
 
 async function searchingArray(searchString){
-
+  ul.style.display = "block";
   ul.innerHTML = "";
   console.log(ul)
   const header = document.querySelector(".header");
@@ -48,12 +48,23 @@ async function searchingArray(searchString){
       <span class = "material-symbols-outlined"> search </span> ${item.snippet.title}
       `;
       ul.append(li);
+      li.addEventListener(("click"), () => {
+        searchInput.value = item.snippet.title;
+        fetchSearchResults(searchInput.value);
+        ul.style.display = "none";
+      })
     });
-    ul.style.display = "block";
   } catch (error) {
     console.log("Some Error Occured", error);
   }
 }
+
+// const allSearchItems = document.querySelectorAll(".searchQuery");
+// if(allSearchItems){
+//   allSearchItems.forEach((searchItem) => {
+//     console.log()
+//   })
+// }
 
 window.addEventListener("load", simulatePageLoad);
 function simulatePageLoad() {

@@ -16,7 +16,7 @@ const ul = document.querySelector(".dropdown-menu");
 const youtubeLogo = document.querySelector(".logo");
 
 youtubeLogo.addEventListener("click",() => {
-  window.location.href = "./index.html";
+  window.location.href = "/index.html";
 })
 
 searchInput.addEventListener("input", () => {
@@ -205,7 +205,7 @@ function navigateToVideoDetails(
   document.cookie = `channelName=${channelName}; path=/video-details.html`;
   document.cookie = `subscribersCount=${subscribersCount}; path=/video-details.html`;
   document.cookie = `channelId=${channelId}; path=/video-details.html`;
-  window.location.href = "./video-details.html";
+  window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
 }
 
 

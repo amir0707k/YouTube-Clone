@@ -347,7 +347,7 @@ function navigateToChannelPage(authorImage, authorName, channelId) {
   document.cookie = `authorName=${authorName}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
   document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
 
-  window.location.href = `/channelDetails.html`;
+  window.location.href = `https://amir0707k.github.io/YouTube-Clone/channelDetails.html`;
 }
 
 async function renderChannelDetails(cookiesData) {

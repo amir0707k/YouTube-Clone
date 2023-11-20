@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
     sideVideos();
     new YT.Player("video-placeholder", {
       height: "650",
-      width: "1050",
+      width: "1150",
       videoId,
     });
         const buttonElement = document.querySelector(".subscribe");

@@ -16,7 +16,9 @@ window.addEventListener("load", () => {
     let parts = cookies[i].split("=");
     cookiesData[parts[0]] = parts[1];
   }
+  
   console.log(cookiesData);
+  document.title = cookiesData.videoTitle;
   const videoId = cookiesData.id;
   console.log(videoId);
   const fromChannel = document.getElementById("from-channel");

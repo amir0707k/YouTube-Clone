@@ -196,7 +196,7 @@ function navigateToVideoDetails(
   subscribersCount,
   channelId
 ) {
-  document.cookie = `id=${videoId}; path=/video-details.html`;
+  document.cookie = `id=${videoId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `videoTitle=${videoTitle}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `viewsCount=${viewCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `uploadDate=${uploadDate}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
@@ -204,7 +204,7 @@ function navigateToVideoDetails(
   document.cookie = `channelLogo=${channelLogo}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `channelName=${channelName}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   document.cookie = `subscribersCount=${subscribersCount}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
-  document.cookie = `channelId=${channelId}; path=/video-details.html`;
+  document.cookie = `channelId=${channelId}; path=https://amir0707k.github.io/YouTube-Clone/video-details.html`;
   window.location.href = "https://amir0707k.github.io/YouTube-Clone/video-details.html";
 }
 

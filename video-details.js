@@ -50,8 +50,8 @@ window.addEventListener("load", () => {
     loadAllComments(videoId);
     sideVideos();
     new YT.Player("video-placeholder", {
-      height: "500",
-      width: "950",
+      height: "650",
+      width: "1150",
       videoId,
     });
         const buttonElement = document.querySelector(".subscribe");
